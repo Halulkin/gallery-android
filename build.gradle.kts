@@ -1,6 +1,38 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    dependencies {
+        classpath(libs.android.gradle.plugin)
+        classpath(libs.kotlin.gradle.plugin)
+    }
+}
+
 plugins {
     alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.compose) apply false
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.detekt)
+}
+
+allprojects {
+    apply(plugin = "io.gitlab.arturbosch.detekt")
+    detekt {
+        config.setFrom("$rootDir/detekt-config.yml")
+        buildUponDefaultConfig = true
+    }
+}
+
+subprojects {
+    apply(plugin = "com.diffplug.spotless")
+    spotless {
+        kotlin {
+            target("src/**/*.kt")
+            ktlint().editorConfigOverride(
+                mapOf(
+                    "android" to "true",
+                    "ktlint_function_naming_ignore_when_annotated_with" to "Composable",
+                ),
+            )
+        }
+    }
 }
