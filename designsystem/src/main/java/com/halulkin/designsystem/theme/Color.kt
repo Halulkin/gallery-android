@@ -1,4 +1,4 @@
-package com.halulkin.gallery.ui.theme
+package com.halulkin.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
