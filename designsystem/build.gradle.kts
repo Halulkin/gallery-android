@@ -10,8 +10,11 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(project(":core"))
+
+    // Compose
+    implementation(platform(libs.android.compose.bom))
+    implementation(libs.android.compose.ui.tooling.preview)
+    implementation(libs.android.compose.material3)
+    implementation(libs.android.core)
 }

@@ -2,6 +2,7 @@ buildscript {
     dependencies {
         classpath(libs.android.gradle.plugin)
         classpath(libs.kotlin.gradle.plugin)
+        classpath(libs.hilt.android.plugin)
     }
 }
 
@@ -10,20 +11,20 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.compose) apply false
+    alias(libs.plugins.hilt) apply false
+    alias(libs.plugins.ksp) apply false
     alias(libs.plugins.spotless)
     alias(libs.plugins.detekt)
 }
 
-allprojects {
+subprojects {
     apply(plugin = "io.gitlab.arturbosch.detekt")
+    apply(plugin = "com.diffplug.spotless")
+
     detekt {
         config.setFrom("$rootDir/detekt-config.yml")
         buildUponDefaultConfig = true
     }
-}
-
-subprojects {
-    apply(plugin = "com.diffplug.spotless")
     spotless {
         kotlin {
             target("src/**/*.kt")
