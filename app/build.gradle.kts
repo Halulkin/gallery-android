@@ -1,8 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application)
     alias(libs.plugins.convention.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
@@ -14,7 +11,6 @@ android {
         applicationId = "com.halulkin.gallery"
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
