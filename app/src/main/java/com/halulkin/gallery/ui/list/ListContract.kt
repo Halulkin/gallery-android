@@ -12,5 +12,5 @@ data class ListState(
 data class ListActions(
     val onQueryChange: (String) -> Unit = {},
     val onSearch: (String) -> Unit = {},
-    val onImageClick: (String) -> Unit = {}
+    val onImageClick: (String) -> Unit = {},
 )

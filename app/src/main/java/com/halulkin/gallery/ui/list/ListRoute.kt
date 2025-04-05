@@ -14,7 +14,7 @@ fun ListRoute(
     val uiState by viewModel.stateFlow.collectAsStateWithLifecycle()
     val actions = rememberListActions(
         onImageClick = onImageClick,
-        viewModel = viewModel
+        viewModel = viewModel,
     )
 
     ListScreen(uiState, actions)
@@ -23,7 +23,7 @@ fun ListRoute(
 @Composable
 fun rememberListActions(
     onImageClick: (String) -> Unit = {},
-    viewModel: ListViewModel
+    viewModel: ListViewModel,
 ) = remember(viewModel) {
     ListActions(
         onImageClick = onImageClick,

@@ -65,7 +65,7 @@ fun SearchBar(
                     leadingContent = {
                         Icon(
                             imageVector = Icons.Filled.Star,
-                            contentDescription = null
+                            contentDescription = null,
                         )
                     },
                     colors = ListItemDefaults.colors(containerColor = Color.Transparent),
@@ -75,7 +75,7 @@ fun SearchBar(
                         .clickable {
                             onQueryChange(suggestion)
                             expanded = false
-                        }
+                        },
                 )
             }
         }

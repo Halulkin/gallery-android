@@ -10,7 +10,6 @@ interface ImagesApi {
     suspend fun getImagesByTag(
         @Query("format") format: String = "json",
         @Query("nojsoncallback") noJsonCallback: Int = 1,
-        @Query("tags") tags: String
+        @Query("tags") tags: String,
     ): ImagesResponse
-
 }

@@ -32,14 +32,14 @@ import com.halulkin.gallery.ui.list.components.ImageWithTitle
 @Composable
 fun ListScreen(
     state: ListState,
-    actions: ListActions
+    actions: ListActions,
 ) {
     ListScreenContent(
         query = state.query,
         images = state.images,
         onQueryChange = actions.onQueryChange,
         onSearch = actions.onSearch,
-        onImageClick = actions.onImageClick
+        onImageClick = actions.onImageClick,
     )
 }
 
@@ -49,12 +49,12 @@ private fun ListScreenContent(
     images: List<Image>,
     onQueryChange: (String) -> Unit,
     onSearch: (String) -> Unit,
-    onImageClick: (String) -> Unit
+    onImageClick: (String) -> Unit,
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Black)
+            .background(Black),
     ) {
         LazyVerticalStaggeredGrid(
             contentPadding = PaddingValues(vertical = 120.dp, horizontal = 8.dp),
@@ -71,11 +71,11 @@ private fun ListScreenContent(
                             .wrapContentHeight()
                             .clip(RoundedCornerShape(12.dp))
                             .background(DarkGray)
-                            .clickable { onImageClick(image.url) }
+                            .clickable { onImageClick(image.url) },
                     )
                 }
             },
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         )
         Box(
             modifier = Modifier
@@ -84,9 +84,9 @@ private fun ListScreenContent(
                 .align(TopCenter)
                 .background(
                     Brush.verticalGradient(
-                        listOf(Black, Black, Black, Transparent, Transparent)
-                    )
-                )
+                        listOf(Black, Black, Black, Transparent, Transparent),
+                    ),
+                ),
         )
         SearchBar(
             query = query,
@@ -94,7 +94,7 @@ private fun ListScreenContent(
             onSearch = onSearch,
             placeholder = "Search",
             leadingIcon = Icons.Default.Search,
-            modifier = Modifier.align(TopCenter)
+            modifier = Modifier.align(TopCenter),
         )
     }
 }
@@ -104,6 +104,6 @@ private fun ListScreenContent(
 private fun ListScreenPreview() {
     ListScreen(
         state = ListState(),
-        actions = ListActions()
+        actions = ListActions(),
     )
 }

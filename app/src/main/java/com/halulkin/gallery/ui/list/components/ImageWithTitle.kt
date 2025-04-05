@@ -23,7 +23,7 @@ import com.halulkin.gallery.domain.model.Image
 fun ImageWithTitle(
     image: Image,
     onImageClick: (String) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
         AsyncImage(
@@ -34,14 +34,14 @@ fun ImageWithTitle(
                 .fillMaxWidth()
                 .wrapContentHeight()
                 .clickable(
-                    onClick = { onImageClick(image.url) }
+                    onClick = { onImageClick(image.url) },
                 )
                 .clip(
                     RoundedCornerShape(
                         topStart = 12.dp,
                         topEnd = 12.dp,
-                    )
-                )
+                    ),
+                ),
         )
         Text(
             text = image.title,
@@ -51,7 +51,7 @@ fun ImageWithTitle(
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp)
+                .padding(8.dp),
         )
     }
 }
@@ -62,8 +62,8 @@ private fun PreviewImageWithTitle() {
     ImageWithTitle(
         image = Image(
             title = "Sample Image",
-            url = "https://example.com/sample.jpg"
+            url = "https://example.com/sample.jpg",
         ),
-        onImageClick = {}
+        onImageClick = {},
     )
 }
