@@ -27,7 +27,7 @@ class ListViewModel @Inject constructor(
     val stateFlow: StateFlow<ListState> = _stateFlow.asStateFlow()
 
     init {
-        val tag = savedStateHandle.get<String>(TAG_KEY) ?: ""
+        val tag = savedStateHandle.get<String>(TAG_KEY) ?: "Home"
         getImagesByTag(tag)
     }
 
