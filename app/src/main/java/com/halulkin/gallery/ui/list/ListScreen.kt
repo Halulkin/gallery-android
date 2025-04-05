@@ -91,11 +91,11 @@ private fun ListScreenContent(
                             MaterialTheme.colorScheme.background,
                             MaterialTheme.colorScheme.background,
                             MaterialTheme.colorScheme.background,
-                            Transparent
+                            Transparent,
                         ),
                         startY = 100f,
-                        endY = 140f * LocalDensity.current.density
-                    )
+                        endY = 140f * LocalDensity.current.density,
+                    ),
                 ),
         )
         AppSearchBar(
