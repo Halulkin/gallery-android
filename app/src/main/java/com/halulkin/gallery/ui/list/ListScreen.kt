@@ -15,17 +15,19 @@ import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color.Companion.Black
-import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.graphics.Color.Companion.Transparent
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.halulkin.components.SearchBar
+import com.halulkin.components.AppSearchBar
 import com.halulkin.gallery.domain.model.Image
 import com.halulkin.gallery.ui.list.components.ImageWithTitle
 
@@ -43,6 +45,7 @@ fun ListScreen(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ListScreenContent(
     query: String,
@@ -54,7 +57,7 @@ private fun ListScreenContent(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Black),
+            .background(MaterialTheme.colorScheme.background),
     ) {
         LazyVerticalStaggeredGrid(
             contentPadding = PaddingValues(vertical = 120.dp, horizontal = 8.dp),
@@ -70,7 +73,7 @@ private fun ListScreenContent(
                             .fillMaxWidth()
                             .wrapContentHeight()
                             .clip(RoundedCornerShape(12.dp))
-                            .background(DarkGray)
+                            .background(SearchBarDefaults.colors().containerColor)
                             .clickable { onImageClick(image.url) },
                     )
                 }
@@ -80,15 +83,22 @@ private fun ListScreenContent(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
+                .height(180.dp)
                 .align(TopCenter)
                 .background(
                     Brush.verticalGradient(
-                        listOf(Black, Black, Black, Transparent, Transparent),
-                    ),
+                        colors = listOf(
+                            MaterialTheme.colorScheme.background,
+                            MaterialTheme.colorScheme.background,
+                            MaterialTheme.colorScheme.background,
+                            Transparent
+                        ),
+                        startY = 100f,
+                        endY = 140f * LocalDensity.current.density
+                    )
                 ),
         )
-        SearchBar(
+        AppSearchBar(
             query = query,
             onQueryChange = onQueryChange,
             onSearch = onSearch,
