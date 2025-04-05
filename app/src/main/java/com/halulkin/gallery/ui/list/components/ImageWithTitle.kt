@@ -36,22 +36,16 @@ fun ImageWithTitle(
                 .clickable(
                     onClick = { onImageClick(image.url) },
                 )
-                .clip(
-                    RoundedCornerShape(
-                        topStart = 12.dp,
-                        topEnd = 12.dp,
-                    ),
-                ),
+                .clip(RoundedCornerShape(12.dp)),
         )
         Text(
-            text = image.title,
-            color = White,
+            text = image.title.ifBlank { "No title" },
             style = MaterialTheme.typography.bodyLarge,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp),
+                .padding(16.dp),
         )
     }
 }
