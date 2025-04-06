@@ -5,5 +5,5 @@ data class DetailsState(
 )
 
 data class DetailsActions(
-    val onBackClick: () -> Unit = {}
+    val onBackClick: () -> Unit = {},
 )

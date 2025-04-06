@@ -31,7 +31,7 @@ fun AppTopBar(
         windowInsets = TopAppBarDefaults.windowInsets,
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = Color.Transparent,
-            navigationIconContentColor = MaterialTheme.colorScheme.onSurface
+            navigationIconContentColor = MaterialTheme.colorScheme.onSurface,
         ),
         navigationIcon = {
             if (onBackButtonClick != null) {

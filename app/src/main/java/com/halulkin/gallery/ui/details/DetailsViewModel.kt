@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
-    savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
     companion object {
@@ -26,5 +26,4 @@ class DetailsViewModel @Inject constructor(
     init {
         _stateFlow.update { it.copy(url = url) }
     }
-
 }

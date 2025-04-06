@@ -14,18 +14,17 @@ fun DetailsRoute(
     val uiState by viewModel.stateFlow.collectAsStateWithLifecycle()
     val actions = rememberDetailsActions(
         onBackClick = onBackClick,
-        viewModel = viewModel
+        viewModel = viewModel,
     )
     DetailsScreen(uiState, actions)
 }
 
-
 @Composable
 fun rememberDetailsActions(
     onBackClick: () -> Unit = {},
-    viewModel: DetailsViewModel
+    viewModel: DetailsViewModel,
 ) = remember(viewModel) {
     DetailsActions(
-        onBackClick = onBackClick
+        onBackClick = onBackClick,
     )
 }

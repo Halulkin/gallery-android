@@ -14,7 +14,7 @@ import com.halulkin.components.AppTopBar
 @Composable
 fun DetailsScreen(
     state: DetailsState,
-    actions: DetailsActions
+    actions: DetailsActions,
 ) {
     Box(
         modifier = Modifier
@@ -24,11 +24,11 @@ fun DetailsScreen(
         AsyncImage(
             model = state.url,
             contentDescription = "Image",
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         )
         AppTopBar(
             onBackButtonClick = actions.onBackClick,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         )
     }
 }
@@ -38,7 +38,6 @@ fun DetailsScreen(
 private fun DetailsScreenPreview() {
     DetailsScreen(
         state = DetailsState(),
-        actions = DetailsActions()
+        actions = DetailsActions(),
     )
 }
-
