@@ -8,16 +8,17 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
@@ -73,7 +74,7 @@ private fun ListScreenContent(
                             .fillMaxWidth()
                             .wrapContentHeight()
                             .clip(RoundedCornerShape(12.dp))
-                            .background(SearchBarDefaults.colors().containerColor)
+                            .background(MaterialTheme.colorScheme.surfaceContainer)
                             .clickable { onImageClick(image.url) },
                     )
                 }
@@ -104,7 +105,11 @@ private fun ListScreenContent(
             onSearch = onSearch,
             placeholder = "Search",
             leadingIcon = Icons.Default.Search,
-            modifier = Modifier.align(TopCenter),
+            trailingIcon = Icons.Default.Close,
+            modifier = Modifier
+                .align(TopCenter)
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 32.dp)
         )
     }
 }
