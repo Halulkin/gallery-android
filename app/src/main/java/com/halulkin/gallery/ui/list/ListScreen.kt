@@ -111,7 +111,7 @@ private fun ListScreenContent(
                 .fillMaxWidth()
                 .padding(
                     horizontal = 16.dp,
-                    vertical = 48.dp
+                    vertical = 42.dp
                 ),
         )
     }
