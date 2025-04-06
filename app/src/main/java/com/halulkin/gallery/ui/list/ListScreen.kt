@@ -109,7 +109,7 @@ private fun ListScreenContent(
             modifier = Modifier
                 .align(TopCenter)
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 32.dp)
+                .padding(horizontal = 16.dp, vertical = 32.dp),
         )
     }
 }

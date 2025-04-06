@@ -28,7 +28,7 @@ fun DetailsScreen(
             contentDescription = "Image",
             modifier = Modifier
                 .fillMaxSize()
-                .zoomable(rememberZoomableState())
+                .zoomable(rememberZoomableState()),
         )
         AppTopBar(
             onBackButtonClick = actions.onBackClick,

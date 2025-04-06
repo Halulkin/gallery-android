@@ -42,10 +42,12 @@ fun AppSearchBar(
                 Icon(
                     imageVector = trailingIcon,
                     contentDescription = "Clear",
-                    modifier = Modifier.clickable { onQueryChange("") }
+                    modifier = Modifier.clickable { onQueryChange("") },
                 )
             }
-        } else null,
+        } else {
+            null
+        },
         colors = TextFieldDefaults.colors(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
@@ -58,7 +60,7 @@ fun AppSearchBar(
             onSearch = {
                 onSearch(query)
                 focusManager.clearFocus()
-            }
+            },
         ),
         singleLine = true,
     )
