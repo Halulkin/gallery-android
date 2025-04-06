@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.halulkin.gallery.ui.details.DetailsRoute
 import com.halulkin.gallery.ui.list.ListRoute
 
 @Composable
@@ -21,13 +22,17 @@ fun MainNavigation(
         composable<NavItem.List> {
             ListRoute(
                 onImageClick = { url ->
-                    navController.navigate(NavItem.Details)
+                    navController.navigate(NavItem.Details(url))
                 },
             )
         }
 
         composable<NavItem.Details> {
-            // TODO("Details screen")
+            DetailsRoute(
+                onBackClick = {
+                    navController.popBackStack()
+                },
+            )
         }
     }
 }
