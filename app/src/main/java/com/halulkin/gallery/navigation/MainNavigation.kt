@@ -19,7 +19,11 @@ fun MainNavigation(
         modifier = modifier,
     ) {
         composable<NavItem.List> {
-            ListRoute()
+            ListRoute(
+                onImageClick = { url ->
+                    navController.navigate(NavItem.Details)
+                },
+            )
         }
 
         composable<NavItem.Details> {

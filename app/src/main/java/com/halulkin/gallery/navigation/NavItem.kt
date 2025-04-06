@@ -8,5 +8,5 @@ sealed interface NavItem {
     data object List : NavItem
 
     @Serializable
-    data object Details : NavItem
+    data class Details(val url: String) : NavItem
 }
