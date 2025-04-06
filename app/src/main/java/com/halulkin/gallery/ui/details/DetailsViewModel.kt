@@ -2,6 +2,7 @@ package com.halulkin.gallery.ui.details
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.halulkin.gallery.extension.toLargeFlickrImage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -24,6 +25,6 @@ class DetailsViewModel @Inject constructor(
     val stateFlow: StateFlow<DetailsState> = _stateFlow.asStateFlow()
 
     init {
-        _stateFlow.update { it.copy(url = url) }
+        _stateFlow.update { it.copy(url = url.toLargeFlickrImage()) }
     }
 }
