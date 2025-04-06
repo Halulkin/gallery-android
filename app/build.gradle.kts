@@ -53,4 +53,5 @@ dependencies {
     //Coil
     implementation(libs.coil.compose)
     implementation(libs.timber)
+    implementation(libs.telephoto.zoomable)
 }

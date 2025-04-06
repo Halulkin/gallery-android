@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import com.halulkin.components.AppTopBar
+import me.saket.telephoto.zoomable.rememberZoomableState
+import me.saket.telephoto.zoomable.zoomable
 
 @Composable
 fun DetailsScreen(
@@ -24,7 +26,9 @@ fun DetailsScreen(
         AsyncImage(
             model = state.url,
             contentDescription = "Image",
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .zoomable(rememberZoomableState())
         )
         AppTopBar(
             onBackButtonClick = actions.onBackClick,

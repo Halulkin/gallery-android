@@ -17,6 +17,7 @@ okhttp = "4.12.0"
 retrofit = "2.11.0"
 spotless = "6.25.0"
 timber = "5.0.1"
+zoomable = "0.15.1"
 
 [libraries]
 kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
@@ -59,6 +60,7 @@ okhttp-logger = { group = "com.squareup.okhttp3", name = "logging-interceptor", 
 #-------------------------
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+telephoto-zoomable = { group = "me.saket.telephoto", name = "zoomable", version.ref = "zoomable" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
