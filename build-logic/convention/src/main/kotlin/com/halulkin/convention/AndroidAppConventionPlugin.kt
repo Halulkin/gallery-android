@@ -1,20 +1,21 @@
 package com.halulkin.convention
 
-import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import com.halulkin.convention.config.configureAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 
 class AndroidAppConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
-        target.configure<ApplicationExtension> {
-            compileSdk = AndroidConfiguration.COMPILE_SDK
-            defaultConfig {
-                targetSdk = AndroidConfiguration.TARGET_SDK
-                minSdk = AndroidConfiguration.MIN_SDK
+        with(target) {
+            with(pluginManager) {
+                apply("com.android.application")
+                apply("org.jetbrains.kotlin.android")
+                apply("org.jetbrains.kotlin.plugin.compose")
             }
-            buildFeatures {
-                buildConfig = true
+            extensions.configure<BaseAppModuleExtension> {
+                configureAndroid(commonExtension = this)
             }
         }
     }
