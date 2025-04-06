@@ -11,6 +11,7 @@ dependencies {
 
     // Compose
     implementation(platform(libs.android.compose.bom))
+    implementation(libs.android.compose.ui.tooling)
     implementation(libs.android.compose.ui.tooling.preview)
     implementation(libs.android.compose.material3)
     implementation(libs.android.core)
