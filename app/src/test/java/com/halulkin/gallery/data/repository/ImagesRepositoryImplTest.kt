@@ -7,10 +7,10 @@ import com.halulkin.gallery.data.api.ImagesApi
 import com.halulkin.gallery.data.api.dtos.ImageDto
 import com.halulkin.gallery.data.api.dtos.ImagesResponse
 import com.halulkin.gallery.data.api.dtos.MediaDto
-import kotlinx.coroutines.test.runTest
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -31,7 +31,7 @@ class ImagesRepositoryImplTest {
         published = "2023-10-01T00\\:00\\:00Z",
         author = "Author",
         authorId = "authorId",
-        tags = "cat"
+        tags = "cat",
     )
 
     @Before
@@ -50,7 +50,7 @@ class ImagesRepositoryImplTest {
             description = "Description",
             modified = "2023-10-01T00\\:00\\:00Z",
             generator = "Generator",
-            items = listOf(mockImageDto)
+            items = listOf(mockImageDto),
         )
         coEvery { imagesApi.getImagesByTag(tags = tag) } returns response
 
