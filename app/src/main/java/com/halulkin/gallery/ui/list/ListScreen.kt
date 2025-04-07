@@ -20,12 +20,12 @@ fun ListScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(MaterialTheme.colorScheme.background),
     ) {
         ImageGrid(
             images = state.images,
             searchTags = state.searchTags,
-            onImageClick = actions.onImageClick
+            onImageClick = actions.onImageClick,
         )
 
         ImagesSearchBar(
@@ -36,7 +36,7 @@ fun ListScreen(
             onRemoveTag = actions.onRemoveTag,
             modifier = Modifier
                 .align(TopCenter)
-                .fillMaxWidth()
+                .fillMaxWidth(),
         )
     }
 }

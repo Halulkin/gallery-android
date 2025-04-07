@@ -67,7 +67,7 @@ fun ImagesSearchBar(
 private fun TagsList(
     tags: List<String>,
     onRemoveTag: (String) -> Unit,
-    visible: Boolean = tags.isNotEmpty()
+    visible: Boolean = tags.isNotEmpty(),
 ) {
     if (!visible) return
 
@@ -78,7 +78,7 @@ private fun TagsList(
         maxLines = 1,
         modifier = Modifier
             .fillMaxWidth()
-            .horizontalScroll(rememberScrollState())
+            .horizontalScroll(rememberScrollState()),
     ) {
         tags.forEach { tag ->
             AssistChip(
@@ -91,9 +91,9 @@ private fun TagsList(
                         contentDescription = "Remove",
                         modifier = Modifier
                             .size(18.dp)
-                            .clickable { onRemoveTag(tag) }
+                            .clickable { onRemoveTag(tag) },
                     )
-                }
+                },
             )
         }
     }

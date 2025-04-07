@@ -27,7 +27,7 @@ fun ImageGrid(
     onImageClick: (String) -> Unit,
 ) {
     val verticalPadding by animateDpAsState(
-        targetValue = if (searchTags.isNotEmpty()) 170.dp else 120.dp
+        targetValue = if (searchTags.isNotEmpty()) 170.dp else 120.dp,
     )
 
     LazyVerticalStaggeredGrid(
@@ -35,7 +35,7 @@ fun ImageGrid(
         columns = StaggeredGridCells.Fixed(2),
         verticalItemSpacing = 8.dp,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
         items(images) { image ->
             ImageWithTitle(
@@ -46,7 +46,7 @@ fun ImageGrid(
                     .wrapContentHeight()
                     .clip(RoundedCornerShape(12.dp))
                     .background(MaterialTheme.colorScheme.surfaceContainer)
-                    .clickable { onImageClick(image.url) }
+                    .clickable { onImageClick(image.url) },
             )
         }
     }
