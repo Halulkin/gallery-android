@@ -42,7 +42,7 @@ fun ImagesSearchBar(
                 start = 16.dp,
                 end = 16.dp,
                 top = 42.dp,
-                bottom = 8.dp
+                bottom = 8.dp,
             ),
     ) {
         AppSearchBar(
@@ -52,7 +52,7 @@ fun ImagesSearchBar(
             placeholder = "Search images by tags...",
             leadingIcon = Icons.Default.Search,
             trailingIcon = Icons.Default.Close,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         )
 
         if (tags.isNotEmpty()) {
@@ -63,7 +63,7 @@ fun ImagesSearchBar(
                 maxLines = 1,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .horizontalScroll(rememberScrollState())
+                    .horizontalScroll(rememberScrollState()),
             ) {
                 tags.forEach { tag ->
                     AssistChip(
@@ -76,9 +76,9 @@ fun ImagesSearchBar(
                                 contentDescription = "Remove",
                                 modifier = Modifier
                                     .size(18.dp)
-                                    .clickable { onRemoveTag(tag) }
+                                    .clickable { onRemoveTag(tag) },
                             )
-                        }
+                        },
                     )
                 }
             }

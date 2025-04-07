@@ -59,7 +59,7 @@ private fun ListScreenContent(
             .background(MaterialTheme.colorScheme.background),
     ) {
         val verticalPadding by animateDpAsState(
-            targetValue = if (searchTags.isNotEmpty()) 170.dp else 120.dp
+            targetValue = if (searchTags.isNotEmpty()) 170.dp else 120.dp,
         )
         LazyVerticalStaggeredGrid(
             contentPadding = PaddingValues(vertical = verticalPadding, horizontal = 8.dp),
@@ -90,7 +90,7 @@ private fun ListScreenContent(
             onRemoveTag = onRemoveTag,
             modifier = Modifier
                 .align(TopCenter)
-                .fillMaxWidth()
+                .fillMaxWidth(),
         )
     }
 }
