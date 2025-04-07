@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.halulkin.designsystem.theme.GalleryTheme
+import com.halulkin.theme.GalleryTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
