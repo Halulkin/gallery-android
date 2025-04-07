@@ -42,7 +42,7 @@ fun ImagesSearchBar(
                 start = 16.dp,
                 end = 16.dp,
                 top = 42.dp,
-                bottom = 8.dp,
+                bottom = if (tags.isEmpty()) 16.dp else 8.dp,
             ),
     ) {
         AppSearchBar(
