@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 fun AppSearchBar(
     query: String,
     onQueryChange: (String) -> Unit,
-    onSearch: (String) -> Unit,
+    onAddTag: (String) -> Unit,
     modifier: Modifier = Modifier,
     placeholder: String? = null,
     leadingIcon: ImageVector? = null,
@@ -58,7 +58,7 @@ fun AppSearchBar(
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
         keyboardActions = KeyboardActions(
             onSearch = {
-                onSearch(query)
+                onAddTag(query)
                 focusManager.clearFocus()
             },
         ),

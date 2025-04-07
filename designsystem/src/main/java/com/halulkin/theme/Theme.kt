@@ -1,4 +1,4 @@
-package com.halulkin.designsystem.theme
+package com.halulkin.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
