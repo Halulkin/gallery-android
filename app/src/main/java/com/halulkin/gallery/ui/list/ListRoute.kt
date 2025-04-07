@@ -26,9 +26,9 @@ fun rememberListActions(
     viewModel: ListViewModel,
 ) = remember(viewModel) {
     ListActions(
-        onQueryChange = viewModel::onQueryChange,
-        onSearch = viewModel::onSearch,
-        onRemoveTag = viewModel::onRemoveTag,
+        onQueryChange = viewModel::changeQuery,
+        onAddTag = viewModel::addTag,
+        onRemoveTag = viewModel::removeTag,
         onImageClick = onImageClick,
     )
 }

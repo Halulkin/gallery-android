@@ -19,54 +19,56 @@ class ListViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
-    companion object {
-        const val TAG_KEY = "tag_key"
-    }
-
     private val _stateFlow: MutableStateFlow<ListState> = MutableStateFlow(ListState())
     val stateFlow: StateFlow<ListState> = _stateFlow.asStateFlow()
 
     init {
-        val tag = savedStateHandle.get<String>(TAG_KEY) ?: "Home"
-        getImagesByTag(tag)
+        savedStateHandle.get<String>(TAG_KEY)
+            ?.takeIf { it.isNotBlank() }
+            ?.let { addTag(it) }
     }
 
-    fun onQueryChange(query: String) {
+    fun changeQuery(query: String) {
         _stateFlow.update { it.copy(query = query) }
     }
 
-    private fun addTag(tag: String) {
+    fun addTag(tag: String) {
+        if (tag.isBlank() || stateFlow.value.searchTags.contains(tag)) return
+
         _stateFlow.update {
             it.copy(searchTags = it.searchTags + tag, query = "")
         }
+        loadImages()
     }
 
-    fun onRemoveTag(tag: String) {
+    fun removeTag(tag: String) {
         _stateFlow.update {
             it.copy(searchTags = it.searchTags - tag)
         }
-        getImagesByTag(stateFlow.value.searchTags.joinToString())
+        loadImages()
     }
 
-    fun onSearch(tag: String) {
-        addTag(tag)
-        getImagesByTag(stateFlow.value.searchTags.joinToString())
-    }
+    private fun loadImages() = viewModelScope.launch {
+        val tags = stateFlow.value.searchTags
+        if (tags.isEmpty()) return@launch
 
-    fun getImagesByTag(tag: String) = viewModelScope.launch {
-        _stateFlow.update { it.copy(isLoading = true) }
+        _stateFlow.update { it.copy(isLoading = true, error = null) }
 
-        getImagesByTagUseCase(tag)
+        getImagesByTagUseCase(tags.joinToString())
             .onSuccess { images ->
                 _stateFlow.update {
                     it.copy(images = images, isLoading = false)
                 }
             }
             .onFailure { error ->
-                Timber.e("getImagesByTag: $error")
+                Timber.e(error)
                 _stateFlow.update {
                     it.copy(isLoading = false, error = error.message)
                 }
             }
+    }
+
+    companion object {
+        const val TAG_KEY = "tag_key"
     }
 }

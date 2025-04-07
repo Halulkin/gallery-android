@@ -23,17 +23,18 @@ import androidx.compose.ui.unit.dp
 fun AppSearchBar(
     query: String,
     onQueryChange: (String) -> Unit,
-    onSearch: (String) -> Unit,
+    onAddTag: (String) -> Unit,
     modifier: Modifier = Modifier,
     placeholder: String? = null,
     leadingIcon: ImageVector? = null,
     trailingIcon: ImageVector? = null,
 ) {
     val focusManager = LocalFocusManager.current
+
     TextField(
-        modifier = modifier,
         value = query,
         onValueChange = onQueryChange,
+        modifier = modifier,
         placeholder = placeholder?.let { { Text(it) } },
         leadingIcon = leadingIcon?.let { { Icon(it, contentDescription = null) } },
         trailingIcon = if (query.isNotEmpty() && trailingIcon != null) {
@@ -57,10 +58,8 @@ fun AppSearchBar(
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
         keyboardActions = KeyboardActions(
             onSearch = {
-                if (query.isNotBlank()) {
-                    onSearch(query)
-                    focusManager.clearFocus()
-                }
+                onAddTag(query)
+                focusManager.clearFocus()
             },
         ),
         singleLine = true,

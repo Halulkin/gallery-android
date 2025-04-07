@@ -27,9 +27,9 @@ import com.halulkin.components.AppSearchBar
 @Composable
 fun ImagesSearchBar(
     query: String,
-    onQueryChange: (String) -> Unit,
-    onSearch: (String) -> Unit,
     tags: List<String>,
+    onQueryChange: (String) -> Unit,
+    onAddTag: (String) -> Unit,
     onRemoveTag: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -48,40 +48,53 @@ fun ImagesSearchBar(
         AppSearchBar(
             query = query,
             onQueryChange = onQueryChange,
-            onSearch = onSearch,
+            onAddTag = onAddTag,
             placeholder = "Search images by tags...",
             leadingIcon = Icons.Default.Search,
             trailingIcon = Icons.Default.Close,
             modifier = Modifier.fillMaxWidth(),
         )
 
-        if (tags.isNotEmpty()) {
-            FlowRow(
-                horizontalArrangement = Arrangement.Start,
-                verticalArrangement = Arrangement.Center,
-                maxItemsInEachRow = Int.MAX_VALUE,
-                maxLines = 1,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .horizontalScroll(rememberScrollState()),
-            ) {
-                tags.forEach { tag ->
-                    AssistChip(
-                        onClick = {},
-                        label = { Text(tag) },
-                        modifier = Modifier.padding(end = 4.dp),
-                        trailingIcon = {
-                            Icon(
-                                imageVector = Icons.Filled.Close,
-                                contentDescription = "Remove",
-                                modifier = Modifier
-                                    .size(18.dp)
-                                    .clickable { onRemoveTag(tag) },
-                            )
-                        },
+        TagsList(
+            tags = tags,
+            onRemoveTag = onRemoveTag,
+        )
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun TagsList(
+    tags: List<String>,
+    onRemoveTag: (String) -> Unit,
+    visible: Boolean = tags.isNotEmpty()
+) {
+    if (!visible) return
+
+    FlowRow(
+        horizontalArrangement = Arrangement.Start,
+        verticalArrangement = Arrangement.Center,
+        maxItemsInEachRow = Int.MAX_VALUE,
+        maxLines = 1,
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState())
+    ) {
+        tags.forEach { tag ->
+            AssistChip(
+                onClick = {},
+                label = { Text(tag) },
+                modifier = Modifier.padding(end = 4.dp),
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.Close,
+                        contentDescription = "Remove",
+                        modifier = Modifier
+                            .size(18.dp)
+                            .clickable { onRemoveTag(tag) }
                     )
                 }
-            }
+            )
         }
     }
 }
