@@ -57,8 +57,10 @@ fun AppSearchBar(
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
         keyboardActions = KeyboardActions(
             onSearch = {
-                onSearch(query)
-                focusManager.clearFocus()
+                if (query.isNotBlank()) {
+                    onSearch(query)
+                    focusManager.clearFocus()
+                }
             },
         ),
         singleLine = true,
