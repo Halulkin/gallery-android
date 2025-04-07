@@ -30,11 +30,10 @@ fun AppSearchBar(
     trailingIcon: ImageVector? = null,
 ) {
     val focusManager = LocalFocusManager.current
-
     TextField(
+        modifier = modifier,
         value = query,
         onValueChange = onQueryChange,
-        modifier = modifier,
         placeholder = placeholder?.let { { Text(it) } },
         leadingIcon = leadingIcon?.let { { Icon(it, contentDescription = null) } },
         trailingIcon = if (query.isNotEmpty() && trailingIcon != null) {

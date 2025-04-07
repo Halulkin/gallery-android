@@ -35,9 +35,22 @@ class ListViewModel @Inject constructor(
         _stateFlow.update { it.copy(query = query) }
     }
 
-    fun onSearch(query: String) {
-        _stateFlow.update { it.copy(query = query) }
-        getImagesByTag(query)
+    private fun addTag(tag: String) {
+        _stateFlow.update {
+            it.copy(searchTags = it.searchTags + tag, query = "")
+        }
+    }
+
+    fun onRemoveTag(tag: String) {
+        _stateFlow.update {
+            it.copy(searchTags = it.searchTags - tag)
+        }
+        getImagesByTag(stateFlow.value.searchTags.joinToString())
+    }
+
+    fun onSearch(tag: String) {
+        addTag(tag)
+        getImagesByTag(stateFlow.value.searchTags.joinToString())
     }
 
     fun getImagesByTag(tag: String) = viewModelScope.launch {
