@@ -50,6 +50,11 @@ dependencies {
     // Networking
     implementation(libs.retrofit)
 
+    // Testing
+    testImplementation(libs.kotlin.coroutines.test)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+
     //Coil
     implementation(libs.coil.compose)
     implementation(libs.timber)
