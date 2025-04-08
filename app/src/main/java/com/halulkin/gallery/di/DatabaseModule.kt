@@ -20,7 +20,8 @@ class DatabaseModule {
     ): ImagesDatabase {
         return Room.databaseBuilder(
             context,
-            ImagesDatabase::class.java, "Images.db"
+            ImagesDatabase::class.java,
+            "Images.db",
         ).build()
     }
 
